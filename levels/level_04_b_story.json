@@ -1,0 +1,68 @@
+[
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/azure_dragon.png",
+        "name":  "青龙",
+        "content":  "原来我也会疼。原来把春天握得太紧，连自己也会被冻住。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "四道岁契正在松开。停岁要结束了。"
+    },
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/azure_dragon.png",
+        "name":  "青龙",
+        "content":  "可我仍不知道，放开之后会是什么。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "我也不知道。但这一次，不由一只龙或一座岁庭替所有人决定。"
+    },
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/azure_dragon.png",
+        "name":  "青龙",
+        "content":  "二十年前，我把春种交给你，是希望有人能替我问这个问题。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "什么问题？"
+    },
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/azure_dragon.png",
+        "name":  "青龙",
+        "content":  "若保护众生的代价，是让众生永远不能选择自己的季节……这还算保护吗？"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "不算。但从今以后，冬天仍然会伤人。你要承认这一点。"
+    },
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/azure_dragon.png",
+        "name":  "青龙",
+        "content":  "我承认。拿好青龙面具。它不是王冠，只是一把打开春天的钥匙。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "我会带着所有没能寄出的信，走到道路重新畅通的时候。"
+    },
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/azure_dragon.png",
+        "name":  "青龙",
+        "content":  "别再替我收契。去做那个替活人送信的人。"
+    }
+]

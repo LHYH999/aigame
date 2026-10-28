@@ -1,0 +1,351 @@
+extends SceneTree
+
+
+const HeadlessGameplayFixture := preload("res://tests/headless_gameplay_fixture.gd")
+const LEVEL_04_SCENE := preload("res://levels/level_04.tscn")
+const MAIN_SCENE := preload("res://main.tscn")
+const AWAKENING_DISTANCE := 800.0
+const DEAD_DURATION := 0.9
+const MAX_STORY_ADVANCE_INPUTS := 64
+const TERMINAL_OUTCOME_PLAYER_DEFEAT := &"player_defeat"
+const TERMINAL_OUTCOME_VALDEMAR_DEFEAT := &"valdemar_defeat"
+const PHASE_EPILOGUE := &"epilogue"
+const PHASE_PRODUCER := &"producer"
+
+var fixture: HeadlessGameplayFixture
+
+
+func _init() -> void:
+	call_deferred("_run")
+
+
+func _run() -> void:
+	fixture = HeadlessGameplayFixture.new(self)
+	await test_pre_awakening_story_blocks_transformation()
+	await test_retry_skips_pre_awakening_story()
+	await test_valdemar_defeat_plays_victory_story_after_death_motion()
+	await test_player_defeat_first_remains_authoritative()
+
+	fixture.complete(false)
+	await fixture.process_frames(3)
+	fixture.complete()
+
+
+func test_pre_awakening_story_blocks_transformation() -> void:
+	var level := LEVEL_04_SCENE.instantiate() as CampaignLevel
+	level.call("set_rage_story_enabled", false)
+	level.prepare_for_campaign(false)
+	fixture.add_node(level)
+	fixture.set_current_scene(level)
+	await fixture.process_frames(2)
+	fixture.set_paused(false)
+
+	var player := level.get_node("Player") as DamageableActor
+	var valdemar := level.get_node("Enemies/Valdemar") as DamageableActor
+	var animation_tree := valdemar.get_node("AnimationTree") as AnimationTree
+	var animation_state := animation_tree.get(
+		"parameters/playback"
+	) as AnimationNodeStateMachinePlayback
+	await enter_valdemar_awakening_boundary(player, valdemar)
+
+	fixture.expect(
+		level.is_campaign_story_phase_active(),
+		"Entering Valdemar's boundary starts the Pre-Awakening Story"
+	)
+	fixture.expect(paused, "The Pre-Awakening Story pauses Level 04")
+	fixture.expect(
+		not level.is_campaign_control_available(),
+		"The Pre-Awakening Story keeps Player controls unavailable"
+	)
+	fixture.expect(
+		not level.is_campaign_hud_visible(),
+		"The Pre-Awakening Story hides the HUD"
+	)
+	fixture.expect(
+		animation_state.get_current_node() != &"transformation",
+		"Valdemar does not transform before the Pre-Awakening Story finishes"
+	)
+
+	await advance_story_phase(level)
+	fixture.expect(
+		not level.is_campaign_story_phase_active() and not paused,
+		"Finishing the Pre-Awakening Story resumes Level 04"
+	)
+	fixture.expect(
+		level.is_campaign_control_available() and level.is_campaign_hud_visible(),
+		"Finishing the Pre-Awakening Story restores gameplay presentation"
+	)
+	await fixture.physics_frames(1)
+	fixture.expect(
+		animation_state.get_current_node() == &"transformation",
+		"Finishing the Pre-Awakening Story immediately starts Valdemar Awakening"
+	)
+
+	fixture.set_current_scene(null)
+	level.queue_free()
+	fixture.set_paused(false)
+	await fixture.process_frames(2)
+
+
+func test_retry_skips_pre_awakening_story() -> void:
+	var main := fixture.instantiate_scene(MAIN_SCENE)
+	fixture.set_current_scene(main)
+	await fixture.process_frames(1)
+	main.call("start_level", LEVEL_04_SCENE, false)
+	await fixture.process_frames(2)
+
+	var defeated_level := main.call("get_active_campaign_level") as CampaignLevel
+	defeated_level.call("set_rage_story_enabled", false)
+	defeated_level.campaign_outcome_reached.emit(CampaignLevel.OUTCOME_DEFEAT)
+	var result_interface := main.get_node("GameResultPopup")
+	result_interface.emit_signal("retry_requested")
+	await fixture.process_frames(2)
+
+	var retry_level := main.call("get_active_campaign_level") as CampaignLevel
+	retry_level.call("set_rage_story_enabled", false)
+	var player := retry_level.get_node("Player") as DamageableActor
+	var valdemar := retry_level.get_node("Enemies/Valdemar") as DamageableActor
+	var animation_tree := valdemar.get_node("AnimationTree") as AnimationTree
+	var animation_state := animation_tree.get(
+		"parameters/playback"
+	) as AnimationNodeStateMachinePlayback
+	await enter_valdemar_awakening_boundary(player, valdemar)
+
+	fixture.expect(
+		not retry_level.is_campaign_story_phase_active() and not paused,
+		"Level 04 retry skips the Pre-Awakening Story"
+	)
+	fixture.expect(
+		animation_state.get_current_node() == &"transformation",
+		"Entering Valdemar's boundary on retry directly starts Awakening"
+	)
+
+	fixture.set_current_scene(null)
+	main.queue_free()
+	fixture.set_paused(false)
+	await fixture.process_frames(2)
+
+
+func test_valdemar_defeat_plays_victory_story_after_death_motion() -> void:
+	var main := fixture.instantiate_scene(MAIN_SCENE)
+	fixture.set_current_scene(main)
+	await fixture.process_frames(1)
+	main.call("start_level", LEVEL_04_SCENE, false, false)
+	await fixture.process_frames(2)
+
+	var level := main.call("get_active_campaign_level") as CampaignLevel
+	level.call("set_rage_story_enabled", false)
+	var player := level.get_node("Player") as DamageableActor
+	var valdemar := level.get_node("Enemies/Valdemar") as DamageableActor
+	await enter_valdemar_awakening_boundary(player, valdemar)
+	await fixture.wait_seconds(1.0)
+	await fixture.physics_frames(2)
+
+	var campaign_outcomes: Array[StringName] = []
+	level.campaign_outcome_reached.connect(
+		func(outcome: StringName) -> void: campaign_outcomes.append(outcome)
+	)
+	valdemar.call("apply_debug_health_override", 1)
+	var locked_player_health: int = player.call("get_current_health")
+	valdemar.call("take_damage", 1, Vector2.ZERO)
+	player.call("take_damage", 1, Vector2.ZERO)
+
+	fixture.expect(
+		level.has_method("get_terminal_outcome")
+		and level.call("get_terminal_outcome") == TERMINAL_OUTCOME_VALDEMAR_DEFEAT,
+		"Valdemar health depletion first locks the Level 04 victory outcome"
+	)
+	fixture.expect(
+		not level.is_campaign_hud_visible()
+		and not level.is_campaign_control_available(),
+		"Valdemar Defeat immediately hides the HUD and disables controls"
+	)
+	fixture.expect(
+		player.call("get_current_health") == locked_player_health,
+		"Valdemar Defeat immediately grants terminal Player damage immunity"
+	)
+	fixture.expect(
+		campaign_outcomes.is_empty() and not level.is_campaign_story_phase_active(),
+		"Valdemar Defeat waits for the complete death motion before Level Completion"
+	)
+
+	await fixture.wait_seconds(DEAD_DURATION + 0.1)
+	await fixture.process_frames(2)
+	var victory_story := level.get_node_or_null("VictoryStory")
+	fixture.expect(
+		campaign_outcomes == [CampaignLevel.OUTCOME_COMPLETION],
+		"Valdemar's retained Dying presentation completes Level 04 exactly once"
+	)
+	fixture.expect(
+		level.is_campaign_story_phase_active()
+		and paused
+		and victory_story != null
+		and victory_story.get("story_path") == "res://levels/level_04_b_story.json",
+		"Level 04 Completion starts the Valdemar Post-Defeat Story"
+	)
+	valdemar.emit_signal("died")
+	await fixture.process_frames(2)
+	fixture.expect(
+		campaign_outcomes == [CampaignLevel.OUTCOME_COMPLETION]
+		and level.get_node_or_null("VictoryStory") == victory_story,
+		"A repeated Valdemar died signal cannot duplicate completion or the Valdemar Post-Defeat Story"
+	)
+
+	var background := level.get_node("Background")
+	await advance_story_phase(level)
+	fixture.expect(
+		main.call("get_campaign_phase") == PHASE_EPILOGUE
+		and main.call("get_active_campaign_level") == null,
+		"Finishing the Valdemar Post-Defeat Story leaves Level 04 for the Campaign Epilogue Page"
+	)
+	fixture.expect(
+		main.get_node_or_null("CampaignEpiloguePage") != null
+		and not bool(main.call("is_campaign_result_visible"))
+		and not paused,
+		"The Campaign Epilogue Page is an unpaused presentation without a result popup"
+	)
+	var epilogue_page := main.get_node_or_null("CampaignEpiloguePage")
+	var epilogue_music := (
+		epilogue_page.find_child("AudioStreamPlayer", true, false) as AudioStreamPlayer
+		if epilogue_page != null
+		else null
+	)
+	fixture.expect(
+		epilogue_music != null and epilogue_music.stream != null,
+		"The Campaign Epilogue Page provides narrative-page music"
+	)
+	fixture.expect(
+		not is_instance_valid(level) and not is_instance_valid(background),
+		"The Campaign Epilogue Page begins only after Level 04 and its music leave the tree"
+	)
+
+	var continuation := InputEventKey.new()
+	continuation.keycode = KEY_ENTER
+	continuation.pressed = true
+	Input.parse_input_event(continuation)
+	await fixture.process_frames(1)
+	fixture.expect(
+		main.call("get_campaign_phase") == PHASE_PRODUCER
+		and main.get_node_or_null("Producer") != null,
+		"Campaign Epilogue Page continuation enters the Producer Page"
+	)
+	fixture.expect(
+		main.call("get_active_campaign_level") == null
+		and not bool(main.call("is_campaign_result_visible"))
+		and not paused,
+		"The Producer Page remains outside gameplay and result presentation"
+	)
+	var producer_page := main.get_node_or_null("Producer")
+	var producer_message := (
+		producer_page.get_node_or_null(
+			"Control/VBoxContainer/MarginContainer/Label"
+		) as Label
+		if producer_page != null
+		else null
+	)
+	var producer_music := (
+		producer_page.find_child("AudioStreamPlayer", true, false) as AudioStreamPlayer
+		if producer_page != null
+		else null
+	)
+	fixture.expect(
+		producer_music != null and producer_music.stream != null,
+		"The Producer Page provides narrative-page music"
+	)
+	fixture.expect(
+		producer_message != null
+		and producer_message.text.contains("恭喜通关DEMO内容")
+		and producer_message.text.contains("完整版敬请期待"),
+		"Final page presents the DEMO completion message"
+	)
+
+	Input.parse_input_event(continuation)
+	await fixture.process_frames(1)
+	fixture.expect(
+		main.call("get_campaign_phase") == PHASE_PRODUCER
+		and main.get_node_or_null("Producer") == producer_page,
+		"Continuation Input cannot leave or replace the Producer Page"
+	)
+
+	fixture.set_current_scene(null)
+	main.queue_free()
+	fixture.set_paused(false)
+	await fixture.process_frames(2)
+
+
+func test_player_defeat_first_remains_authoritative() -> void:
+	var main := fixture.instantiate_scene(MAIN_SCENE)
+	fixture.set_current_scene(main)
+	await fixture.process_frames(1)
+	main.call("start_level", LEVEL_04_SCENE, false, false)
+	await fixture.process_frames(2)
+
+	var level := main.call("get_active_campaign_level") as CampaignLevel
+	level.call("set_rage_story_enabled", false)
+	var player := level.get_node("Player") as DamageableActor
+	var valdemar := level.get_node("Enemies/Valdemar") as DamageableActor
+	await enter_valdemar_awakening_boundary(player, valdemar)
+	await fixture.wait_seconds(1.0)
+	await fixture.physics_frames(2)
+
+	var campaign_outcomes: Array[StringName] = []
+	level.campaign_outcome_reached.connect(
+		func(outcome: StringName) -> void: campaign_outcomes.append(outcome)
+	)
+	player.call("take_damage", player.call("get_maximum_health"), Vector2.ZERO)
+	valdemar.call("apply_debug_health_override", 1)
+	valdemar.call("take_damage", 1, Vector2.ZERO)
+	await fixture.wait_seconds(DEAD_DURATION + 0.1)
+	await fixture.process_frames(2)
+
+	fixture.expect(
+		level.call("get_terminal_outcome") == TERMINAL_OUTCOME_PLAYER_DEFEAT,
+		"Player health depletion first remains Level 04's terminal outcome"
+	)
+	fixture.expect(
+		campaign_outcomes == [CampaignLevel.OUTCOME_DEFEAT],
+		"Player Defeat first emits one campaign defeat without later completion"
+	)
+	fixture.expect(
+		bool(main.call("is_campaign_result_visible"))
+		and not level.is_campaign_story_phase_active(),
+		"Later Valdemar Defeat cannot replace the loss or start the Valdemar Post-Defeat Story"
+	)
+
+	fixture.set_current_scene(null)
+	main.queue_free()
+	fixture.set_paused(false)
+	await fixture.process_frames(2)
+
+
+func enter_valdemar_awakening_boundary(
+	player: DamageableActor,
+	valdemar: DamageableActor
+) -> void:
+	var awakening_requests := [0]
+	valdemar.connect(
+		&"awakening_requested",
+		func() -> void: awakening_requests[0] += 1,
+		CONNECT_ONE_SHOT
+	)
+	player.global_position = (
+		valdemar.global_position + Vector2(-AWAKENING_DISTANCE - 20.0, -5000.0)
+	)
+	await fixture.physics_frames(2)
+	fixture.expect(
+		awakening_requests[0] == 0,
+		"Valdemar remains dormant while the Player is beyond the 800-pixel boundary"
+	)
+	player.global_position.x = valdemar.global_position.x - AWAKENING_DISTANCE + 1.0
+	await fixture.physics_frames(3)
+
+
+func advance_story_phase(level: CampaignLevel) -> void:
+	for _input_index in MAX_STORY_ADVANCE_INPUTS:
+		if not is_instance_valid(level) or not level.is_campaign_story_phase_active():
+			return
+		var input := InputEventKey.new()
+		input.keycode = KEY_ENTER
+		input.pressed = true
+		Input.parse_input_event(input)
+		await fixture.process_frames(1)

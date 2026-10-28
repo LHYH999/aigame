@@ -1,0 +1,32 @@
+[
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "岁庭里没有守卫，只有一排排被抽空的岁契。逆岁印从地面一直延伸到王座。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "四象被抽走岁髓，停岁才蔓延到整片大陆。所有命令都指向同一个名字。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "青龙相信，只要让春天永远不到来，断岁夜就不会重演。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "但被锁在门外的春天，不会替任何人发芽。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "我要亲自问它，为什么不肯让四季重新流转。"
+    }
+]

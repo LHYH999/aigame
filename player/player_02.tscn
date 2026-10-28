@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bn6tiig2vnj2g"]
+
+[ext_resource type="PackedScene" uid="uid://ci30p1cc0qye5" path="res://player/player.tscn" id="1_lslex"]
+
+[node name="Player_02" unique_id=1483695229 instance=ExtResource("1_lslex")]

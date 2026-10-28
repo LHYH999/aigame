@@ -1,0 +1,26 @@
+[
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "测试测试测试测试测试测试测试测试测试测试测试"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "测试测试测试测试测试测试测试测试测试测试测试"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "",
+        "content":  "独白独白独白"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "停岁之下，每一封没能寄出的信都应当有人记得。"
+    }
+]

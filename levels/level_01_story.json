@@ -1,0 +1,26 @@
+[
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "停岁之后，太阳每天只多留一盏茶。河停在半途，亡者的信也找不到归处。"
+    },
+    {
+        "left":  "",
+        "right":  "",
+        "name":  "岁庭信使",
+        "content":  "西方白虎撕毁了秋金之契。岁官命你前往虎踞霜关，取回它看守的契印。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "如果白虎真的失控，为什么沿途被冻住的人，都朝它守着的山道逃？"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "我替死人送信，也替活人收愿。这一次，我要亲眼看看岁庭没有写进信里的部分。"
+    }
+]

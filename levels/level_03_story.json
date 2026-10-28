@@ -1,0 +1,26 @@
+[
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "前面的河全冻成了黑色。桥下的鱼还保持着游动的姿势，像被谁按下了暂停。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "玄武守的是冬水之契。旧图记载，它的壳甲能把洪水压在河道里。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "雪面上没有一道水痕。如果玄武真的想淹村，这里不该如此安静。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "冰层下面有光。是逆岁印，而且不止一道……有人在借玄武的身体维持停岁。"
+    }
+]

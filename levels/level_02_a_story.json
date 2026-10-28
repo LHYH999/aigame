@@ -1,0 +1,26 @@
+[
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/vermilion_bird.png",
+        "name":  "朱雀",
+        "content":  "我没有烧毁粮仓。我用最后一簇火拖住了岁庭的寒印。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "是谁把逆岁印钉进你的羽翼？"
+    },
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/vermilion_bird.png",
+        "name":  "朱雀",
+        "content":  "穿岁官袍的人。他们说，只要四象都不再醒来，冬天就不会结束，也不会再有人经历断岁夜。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "朱雀面具……火还在跳动，像一颗没肯熄灭的心。"
+    }
+]

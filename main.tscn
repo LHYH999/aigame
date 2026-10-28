@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://csbau0y38v3vv"]
+
+[ext_resource type="PackedScene" uid="uid://d4o7qsu2p7qg" path="res://ui/game_result_popup.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bnqmlejlu8bua" path="res://ui/title.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" path="res://ui/pause_menu.tscn" id="2_pause_menu"]
+[ext_resource type="Script" uid="uid://dldhtxpq1m8h0" path="res://main.gd" id="3_l46ej"]
+[ext_resource type="Texture2D" uid="uid://b8t6t8e6kje45" path="res://assets/ui/guide.png" id="4_1bvp3"]
+[ext_resource type="FontFile" path="res://assets/ui/fonts/fusion-pixel-12px-proportional-zh_hans.ttf" id="4_mask_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mask_guide"]
+content_margin_left = 14.0
+content_margin_top = 6.0
+content_margin_right = 14.0
+content_margin_bottom = 6.0
+bg_color = Color(0.035, 0.03, 0.02, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.72, 0.55, 0.28, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.7)
+shadow_size = 5
+
+[node name="Main" type="Node2D" unique_id=1562279049]
+script = ExtResource("3_l46ej")
+
+[node name="Title" parent="." unique_id=1744554783 instance=ExtResource("2_1bvp3")]
+
+[node name="GameResultPopup" parent="." unique_id=1422562202 instance=ExtResource("2_0xm2m")]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_pause_menu")]
+
+[node name="Guide" type="Control" parent="." unique_id=526430419]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Guide" unique_id=1165024693]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -16.0
+offset_right = 1164.0
+offset_bottom = 657.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_1bvp3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MaskGuide" type="Label" parent="Guide" unique_id=1928325347]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 8.0
+offset_right = 1138.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(1, 0.9, 0.62, 1)
+theme_override_colors/font_outline_color = Color(0.04, 0.08, 0.08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_mask_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_mask_guide")
+text = "面具系统  E 切换面具  ·  Q 面具技能"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DodgeGuide" type="Label" parent="Guide"]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 62.0
+offset_right = 1138.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(0.72, 0.9, 1, 1)
+theme_override_colors/font_outline_color = Color(0.04, 0.08, 0.08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_mask_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_mask_guide")
+text = "Shift 闪身  ·  冷却 0.3 秒"
+horizontal_alignment = 1
+vertical_alignment = 1

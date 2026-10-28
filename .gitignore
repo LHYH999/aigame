@@ -1,0 +1,11 @@
+# Godot 4+ specific ignores
+.godot/
+/Godot/
+/android/
+.DS_Store
+.env
+.tmp/
+__pycache__/
+*.py[cod]
+/docs/game-design/generated-ui/
+/docs/game-design/source-animations/

@@ -1,0 +1,56 @@
+[
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "二十年前，岁序第一次断裂。那一夜之后，岁庭禁止所有人谈起断岁夜。"
+    },
+    {
+        "left":  "",
+        "right":  "",
+        "name":  "幼年砚",
+        "content":  "娘……爹……你们在哪里？雪把脚印都盖住了。"
+    },
+    {
+        "left":  "",
+        "right":  "",
+        "name":  "拾信人",
+        "content":  "孩子，到我这边来。别碰那些停在空中的火。那不是雪，是时间留下的裂缝。"
+    },
+    {
+        "left":  "",
+        "right":  "",
+        "name":  "幼年砚",
+        "content":  "我走不动了……我的手也冻住了。"
+    },
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/azure_dragon.png",
+        "name":  "青龙",
+        "content":  "把手伸出来。春天不该死在冬天前面。"
+    },
+    {
+        "left":  "",
+        "right":  "",
+        "name":  "幼年砚",
+        "content":  "好暖和……你是什么？"
+    },
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/azure_dragon.png",
+        "name":  "青龙",
+        "content":  "记住，这不是礼物，是一粒还没发芽的债。等你听见别人未说完的话，它会醒。"
+    },
+    {
+        "left":  "",
+        "right":  "",
+        "name":  "拾信人",
+        "content":  "青龙已经很久没有回应岁庭了。孩子，若你将来见到它，替我问一句：它后悔吗？"
+    },
+    {
+        "left":  "",
+        "right":  "",
+        "name":  "幼年砚",
+        "content":  "我会活着把这个问题带到。"
+    }
+]

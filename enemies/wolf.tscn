@@ -1,0 +1,357 @@
+[gd_scene format=3 uid="uid://cc3wkfmmrm0n7"]
+
+[ext_resource type="Script" uid="uid://dt56vuorgrvwi" path="res://enemies/wolf.gd" id="1_8cidi"]
+[ext_resource type="Texture2D" uid="uid://dkxc556s8ofav" path="res://assets/enemies/wolf/east.png" id="1_fw1ev"]
+[ext_resource type="Texture2D" uid="uid://d0uwa67eu1wck" path="res://assets/enemies/wolf/idle/east/frame_000.png" id="2_0h01o"]
+[ext_resource type="PackedScene" uid="uid://bhpv3ccs4r5hs" path="res://enemies/warn_mark.tscn" id="2_7ac7i"]
+[ext_resource type="Texture2D" uid="uid://cpl6h4isvuagv" path="res://assets/enemies/wolf/dead/east/frame_000.png" id="3_6krve"]
+[ext_resource type="Texture2D" uid="uid://b1k3fa3niwd4u" path="res://assets/enemies/wolf/idle/east/frame_001.png" id="3_8cidi"]
+[ext_resource type="Texture2D" uid="uid://d2lh8xtukjfo4" path="res://assets/enemies/wolf/dead/east/frame_001.png" id="4_0mknq"]
+[ext_resource type="Texture2D" uid="uid://cfwt77sgavkie" path="res://assets/enemies/wolf/idle/east/frame_002.png" id="4_grymm"]
+[ext_resource type="Texture2D" uid="uid://doam3u53h7u83" path="res://assets/enemies/wolf/dead/east/frame_002.png" id="5_0dc0p"]
+[ext_resource type="Texture2D" uid="uid://dg8sjfdqhxrt3" path="res://assets/enemies/wolf/idle/east/frame_003.png" id="5_ymuxt"]
+[ext_resource type="Texture2D" uid="uid://beid83mmfbt0c" path="res://assets/enemies/wolf/idle/east/frame_004.png" id="6_2dcpb"]
+[ext_resource type="Texture2D" uid="uid://dk4uebstgqkbr" path="res://assets/enemies/wolf/dead/east/frame_003.png" id="6_bsw4q"]
+[ext_resource type="Texture2D" uid="uid://cjfuvdtix7ppu" path="res://assets/enemies/wolf/dead/east/frame_004.png" id="7_hvri8"]
+[ext_resource type="Texture2D" uid="uid://cfbcp46uwiwg" path="res://assets/enemies/wolf/idle/east/frame_005.png" id="7_xvjrt"]
+[ext_resource type="Texture2D" uid="uid://b8ednwsdb1rlf" path="res://assets/enemies/wolf/idle/east/frame_006.png" id="8_kg1no"]
+[ext_resource type="Texture2D" uid="uid://bj03xfm1o4fij" path="res://assets/enemies/wolf/dead/east/frame_005.png" id="8_s5kak"]
+[ext_resource type="Texture2D" uid="uid://dij15ueiqyqyf" path="res://assets/enemies/wolf/dead/east/frame_006.png" id="9_n0e8f"]
+[ext_resource type="Texture2D" uid="uid://dybsurtwrjopp" path="res://assets/enemies/wolf/running/east/frame_000.png" id="9_ofl0k"]
+[ext_resource type="AudioStream" uid="uid://y2w5g1ib8c7u" path="res://assets/enemies/wolf/sounds/dead.wav" id="10_c6w1u"]
+[ext_resource type="Texture2D" uid="uid://do3hqlni0dev4" path="res://assets/enemies/wolf/running/east/frame_001.png" id="10_n7mk6"]
+[ext_resource type="Texture2D" uid="uid://ds0si4oh6ens3" path="res://assets/enemies/wolf/hurt/east/frame_000.png" id="10_tobgu"]
+[ext_resource type="Texture2D" uid="uid://3oou7ep5txve" path="res://assets/enemies/wolf/hurt/east/frame_001.png" id="11_byhdk"]
+[ext_resource type="Texture2D" uid="uid://dmi2dw0v4yay4" path="res://assets/enemies/wolf/running/east/frame_002.png" id="11_cve8t"]
+[ext_resource type="Texture2D" uid="uid://bct7mkt7wajh8" path="res://assets/enemies/wolf/running/east/frame_003.png" id="12_5hpbo"]
+[ext_resource type="Texture2D" uid="uid://ds568dkstux8w" path="res://assets/enemies/wolf/hurt/east/frame_002.png" id="12_y886q"]
+[ext_resource type="Texture2D" uid="uid://c7meye4j2xdxm" path="res://assets/enemies/wolf/hurt/east/frame_003.png" id="13_gq3ci"]
+[ext_resource type="Texture2D" uid="uid://clu1f4n1l83ul" path="res://assets/enemies/wolf/running/east/frame_004.png" id="13_hd7e4"]
+[ext_resource type="Texture2D" uid="uid://bahksb1ufv3ny" path="res://assets/enemies/wolf/hurt/east/frame_004.png" id="14_05db2"]
+[ext_resource type="Texture2D" uid="uid://bhk7drskva8xw" path="res://assets/enemies/wolf/running/east/frame_005.png" id="14_xb6rl"]
+[ext_resource type="Texture2D" uid="uid://dmxpj85hnrnwf" path="res://assets/enemies/wolf/running/east/frame_006.png" id="15_o6wa6"]
+[ext_resource type="Texture2D" uid="uid://bkmgcrrf5mgcw" path="res://assets/enemies/wolf/hurt/east/frame_005.png" id="15_wdeg7"]
+[ext_resource type="Texture2D" uid="uid://bbn6hbpf8r4i6" path="res://assets/enemies/wolf/hurt/east/frame_006.png" id="16_ceace"]
+[ext_resource type="AudioStream" uid="uid://dtfba4smfkvcu" path="res://assets/enemies/wolf/sounds/hurt.wav" id="18_7ac7i"]
+[ext_resource type="Texture2D" uid="uid://b3am6ou5f7i2r" path="res://assets/enemies/wolf/skill/east/frame_002.png" id="31_0mknq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w7j2h"]
+radius = 45.0
+
+[sub_resource type="Animation" id="Animation_d8eyj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_fw1ev")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WarnMark:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2rp1f"]
+resource_name = "dead"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("3_6krve"), ExtResource("4_0mknq"), ExtResource("5_0dc0p"), ExtResource("6_bsw4q"), ExtResource("7_hvri8"), ExtResource("8_s5kak"), ExtResource("9_n0e8f")]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_c6w1u")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_nkd1c"]
+resource_name = "hurt"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("10_tobgu"), ExtResource("11_byhdk"), ExtResource("12_y886q"), ExtResource("13_gq3ci"), ExtResource("14_05db2"), ExtResource("15_wdeg7"), ExtResource("16_ceace")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("18_7ac7i")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="Animation" id="Animation_6krve"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("2_0h01o"), ExtResource("3_8cidi"), ExtResource("4_grymm"), ExtResource("5_ymuxt"), ExtResource("6_2dcpb"), ExtResource("7_xvjrt"), ExtResource("8_kg1no")]
+}
+
+[sub_resource type="Animation" id="Animation_0mknq"]
+resource_name = "running"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("9_ofl0k"), ExtResource("10_n7mk6"), ExtResource("11_cve8t"), ExtResource("12_5hpbo"), ExtResource("13_hd7e4"), ExtResource("14_xb6rl"), ExtResource("15_o6wa6")]
+}
+
+[sub_resource type="Animation" id="Animation_0dc0p"]
+resource_name = "skill"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("31_0mknq")]
+}
+
+[sub_resource type="Animation" id="Animation_qkbfo"]
+resource_name = "warn"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WarnMark:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0dc0p"]
+_data = {
+&"RESET": SubResource("Animation_d8eyj"),
+&"dead": SubResource("Animation_2rp1f"),
+&"hurt": SubResource("Animation_nkd1c"),
+&"idle": SubResource("Animation_6krve"),
+&"running": SubResource("Animation_0mknq"),
+&"skill": SubResource("Animation_0dc0p"),
+&"warn": SubResource("Animation_qkbfo")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6krve"]
+animation = &"dead"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0mknq"]
+animation = &"hurt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0dc0p"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bsw4q"]
+animation = &"running"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hvri8"]
+animation = &"skill"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7ac7i"]
+animation = &"warn"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hvri8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s5kak"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n0e8f"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tobgu"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_byhdk"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y886q"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gq3ci"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_05db2"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6krve"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2rp1f"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qkbfo"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rmctw"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pkui7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tq6ig"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1n5kv"]
+states/End/position = Vector2(763.5, 99.55438)
+states/dead/node = SubResource("AnimationNodeAnimation_6krve")
+states/dead/position = Vector2(614.35, 100.42938)
+states/hurt/node = SubResource("AnimationNodeAnimation_0mknq")
+states/hurt/position = Vector2(460.89, 249.71751)
+states/idle/node = SubResource("AnimationNodeAnimation_0dc0p")
+states/idle/position = Vector2(324.39, 99.10876)
+states/running/node = SubResource("AnimationNodeAnimation_bsw4q")
+states/running/position = Vector2(460.89, 100.85876)
+states/skill/node = SubResource("AnimationNodeAnimation_hvri8")
+states/skill/position = Vector2(472.695, -63.527477)
+states/warn/node = SubResource("AnimationNodeAnimation_7ac7i")
+states/warn/position = Vector2(323.66748, -63.567474)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_hvri8"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_s5kak"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_n0e8f"), "running", "hurt", SubResource("AnimationNodeStateMachineTransition_tobgu"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_byhdk"), "hurt", "running", SubResource("AnimationNodeStateMachineTransition_y886q"), "dead", "End", SubResource("AnimationNodeStateMachineTransition_gq3ci"), "hurt", "dead", SubResource("AnimationNodeStateMachineTransition_05db2"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_6krve"), "skill", "idle", SubResource("AnimationNodeStateMachineTransition_2rp1f"), "skill", "running", SubResource("AnimationNodeStateMachineTransition_qkbfo"), "running", "warn", SubResource("AnimationNodeStateMachineTransition_rmctw"), "idle", "warn", SubResource("AnimationNodeStateMachineTransition_pkui7"), "warn", "skill", SubResource("AnimationNodeStateMachineTransition_tq6ig")]
+graph_offset = Vector2(27.53999, -160.08746)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymuxt"]
+size = Vector2(68, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1n5kv"]
+size = Vector2(400, 50.5)
+
+[node name="Wolf" type="CharacterBody2D" unique_id=2030230368 groups=["enemies"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_8cidi")
+
+[node name="WarnMark" parent="." unique_id=1722422829 instance=ExtResource("2_7ac7i")]
+visible = false
+position = Vector2(-2, -103)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=814845308]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_fw1ev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=665226154]
+position = Vector2(-6, 2)
+shape = SubResource("CircleShape2D_w7j2h")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=645920161]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=158519573]
+libraries/ = SubResource("AnimationLibrary_0dc0p")
+autoplay = &"idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1795779147]
+tree_root = SubResource("AnimationNodeStateMachine_1n5kv")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1437790023]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1216210073]
+position = Vector2(-1, 7.5)
+shape = SubResource("RectangleShape2D_ymuxt")
+
+[node name="SkillDetect" type="Area2D" parent="." unique_id=12688605]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SkillDetect" unique_id=467527254]
+position = Vector2(222, 5)
+shape = SubResource("RectangleShape2D_1n5kv")
+
+[node name="Cooldown" type="Timer" parent="SkillDetect" unique_id=445454829]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="body_entered" from="SkillDetect" to="." method="_on_skill_detect_body_entered"]

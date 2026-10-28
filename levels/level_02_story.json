@@ -1,0 +1,26 @@
+[
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "赤羽烬原原本是夏季祭田，现在连火都冻在叶子上。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "朱雀的羽痕一直朝岁庭方向延伸。它不像是在追人，更像是在把什么引回去。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "岁庭说朱雀烧毁粮仓。可火痕避开村庄，只落在已经枯死的田里。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "我得亲眼看看它守着什么。"
+    }
+]

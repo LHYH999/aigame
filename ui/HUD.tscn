@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://bi4cujqbvf3h0"]
+
+[ext_resource type="Texture2D" uid="uid://dqxsua366mwn0" path="res://assets/ui/heart.png" id="1_1x8ju"]
+[ext_resource type="Script" uid="uid://i1iokiwmhpi6" path="res://ui/hud.gd" id="1_pnr6q"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1501471726]
+layer = 10
+script = ExtResource("1_pnr6q")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1422814204]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="LifeCounter" type="HBoxContainer" parent="MarginContainer" unique_id=1372307757]
+layout_mode = 2
+
+[node name="L1" type="TextureRect" parent="MarginContainer/LifeCounter" unique_id=1037045511]
+layout_mode = 2
+texture = ExtResource("1_1x8ju")
+
+[node name="L2" type="TextureRect" parent="MarginContainer/LifeCounter" unique_id=531495533]
+layout_mode = 2
+texture = ExtResource("1_1x8ju")
+
+[node name="L3" type="TextureRect" parent="MarginContainer/LifeCounter" unique_id=136460470]
+layout_mode = 2
+texture = ExtResource("1_1x8ju")
+
+[node name="L4" type="TextureRect" parent="MarginContainer/LifeCounter" unique_id=1389876275]
+layout_mode = 2
+texture = ExtResource("1_1x8ju")
+
+[node name="L5" type="TextureRect" parent="MarginContainer/LifeCounter" unique_id=1291679889]
+layout_mode = 2
+texture = ExtResource("1_1x8ju")
+
+[node name="L6" type="TextureRect" parent="MarginContainer/LifeCounter" unique_id=1867347160]
+layout_mode = 2
+texture = ExtResource("1_1x8ju")
+
+[node name="L7" type="TextureRect" parent="MarginContainer/LifeCounter" unique_id=559296554]
+layout_mode = 2
+texture = ExtResource("1_1x8ju")
+
+[node name="L8" type="TextureRect" parent="MarginContainer/LifeCounter" unique_id=1714287555]
+layout_mode = 2
+texture = ExtResource("1_1x8ju")
+
+[node name="MaskPanel" type="PanelContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -104.0
+offset_right = 330.0
+offset_bottom = -20.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="MaskContent" type="HBoxContainer" parent="MaskPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MaskIcon" type="TextureRect" parent="MaskPanel/MaskContent"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MaskText" type="VBoxContainer" parent="MaskPanel/MaskContent"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="MaskName" type="Label" parent="MaskPanel/MaskContent/MaskText"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "未获得面具"
+
+[node name="MaskStatus" type="Label" parent="MaskPanel/MaskContent/MaskText"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "击败神兽后获得"

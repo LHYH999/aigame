@@ -1,0 +1,56 @@
+[
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/azure_dragon.png",
+        "name":  "青龙",
+        "content":  "你还是来了。春种在你身上发了芽，却没有让你学会害怕。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "你记得我。"
+    },
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/azure_dragon.png",
+        "name":  "青龙",
+        "content":  "我记得每一个死在断岁夜的人。也记得春天归来后，仍有人在泥里失去庄稼。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "所以你替所有人决定，不再让春天回来？"
+    },
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/azure_dragon.png",
+        "name":  "青龙",
+        "content":  "岁庭需要一只能守住冬天的手。白虎、朱雀、玄武都已疲倦，只有我还能让岁序停在这里。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "四象不是四把锁，死去的人也不是修复旧契的材料。"
+    },
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/azure_dragon.png",
+        "name":  "青龙",
+        "content":  "你会让四季重新流转，然后承担不知道会死多少人的代价。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "那就让他们自己决定怎么活。剑不该代替他们做这个选择。"
+    },
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/azure_dragon.png",
+        "name":  "青龙",
+        "content":  "既然如此，让我看看你接过春种之后，究竟长成了什么。"
+    }
+]

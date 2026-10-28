@@ -1,0 +1,32 @@
+[
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "玄武倒下了，洪水却没有冲出河道。它到最后一刻都在替岸上的人撑着。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "冰层里的逆岁印来自岁庭。他们不是来收契的，而是在从四象身上抽取岁髓。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "四象从未想让冬天停住。岁庭抽走它们的力量，才让四季一起冻住。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "青龙守着春木之契。它相信，只要把春天锁住，世界就不会再经历一次断岁夜。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "我会带着玄武面具去岁庭，亲眼看看青龙是不是还记得那粒春种。"
+    }
+]

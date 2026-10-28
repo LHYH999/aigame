@@ -1,0 +1,32 @@
+[
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/white_tiger.png",
+        "name":  "白虎",
+        "content":  "你身上有青龙留下的春种。难怪你能听见契印里的声音。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "你守着山道，是为了让迁徙的人通过？岁庭却说你疯了。"
+    },
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/white_tiger.png",
+        "name":  "白虎",
+        "content":  "旧契要我不能离开西方。我只能挡在山崩前，等一个能带着我的面具继续走的人。"
+    },
+    {
+        "left":  "res://assets/ui/characters/yan_mirrored.png",
+        "right":  "",
+        "name":  "砚",
+        "content":  "白虎面具……好重。像一整座山压进了手里。"
+    },
+    {
+        "left":  "",
+        "right":  "res://assets/ui/masks/white_tiger.png",
+        "name":  "白虎",
+        "content":  "重就对了。力量不是让你忘记代价，是让你记得谁还在等你开路。"
+    }
+]

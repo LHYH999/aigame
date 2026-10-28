@@ -1,0 +1,20 @@
+[
+    {
+        "left": "",
+        "right": "res://assets/enemies/animations/azure_dragon/frames/frame_000.png",
+        "name": "青龙",
+        "content": "你们把四季当成可以随意斩断的锁链，却从未问过，断裂之后谁来承受寒冬。"
+    },
+    {
+        "left": "res://assets/ui/characters/yan_mirrored.png",
+        "right": "",
+        "name": "砚",
+        "content": "四季不是你的囚笼，也不是你必须独自守住的罪。"
+    },
+    {
+        "left": "",
+        "right": "res://assets/enemies/animations/azure_dragon/frames/frame_000.png",
+        "name": "青龙",
+        "content": "那就用你手中的契印来回答——从此刻起，春雷不会再等待。"
+    }
+]
